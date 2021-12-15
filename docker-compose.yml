@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    tty: true
+    command: 'air -c .air.toml'
+    ports:
+      - '8081:8081'
+    volumes:
+      - type: bind
+        source: .
+        target: /go/src/app
+      - type: volume
+        source: go_modules
+        target: /go/pkg/mod
+    environment:
+      PORT: 8081
+
+volumes:
+  go_modules:
