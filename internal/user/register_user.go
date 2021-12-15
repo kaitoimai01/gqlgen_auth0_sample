@@ -6,7 +6,7 @@ import (
 	"net/mail"
 )
 
-// こちらが送信元となります。
+// 送信元
 var (
 	invitaionFrom = &mail.Address{
 		Name:    "gqlgen-auth0",
@@ -47,7 +47,6 @@ func RegisterUser(ctx context.Context, input *RegisterUserInput) (string, error)
 	if err := mc.Send(ctx, invitaionFrom, to, invitaionSubject, body); err != nil {
 		return "", fmt.Errorf("failed to send invitation: %w", err)
 	}
-
 
 	return auth0UserID, nil
 }

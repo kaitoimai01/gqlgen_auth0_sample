@@ -13,15 +13,14 @@ import (
 )
 
 func (r *mutationResolver) RegisterUser(ctx context.Context, input model.UserInfo) (*model.Auth0UserID, error) {
-  // user/user.go を参照
 	var u = &user.User{
-		Email: input.Email,
+		Email:      input.Email,
 		FamilyName: input.FamilyName,
-		GivenName: input.GivenName,
+		GivenName:  input.GivenName,
 	}
 
 	res, err := user.RegisterUser(ctx, &user.RegisterUserInput{
-		User: u,
+		User:                  u,
 		Auth0ManagementClient: r.Auth0Client,
 		MailClient:            r.MailClient,
 	})

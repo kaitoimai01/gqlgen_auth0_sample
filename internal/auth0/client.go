@@ -4,13 +4,15 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/sethvargo/go-password/password"
 	"github.com/kaitoimai01/gqlgen_auth0_sample/internal/user"
+	"github.com/sethvargo/go-password/password"
 	"gopkg.in/auth0.v5"
 	"gopkg.in/auth0.v5/management"
 )
 
 const (
+	// NOTE: connection 定数は Auth0 のダッシュボードより、
+	//       Authentication > Database > Database Connections にて確認できます。
 	connection       = "Username-Password-Authentication"
 	invitationTTLSec = 86400
 )
@@ -23,7 +25,7 @@ func NewClient(mgmt *management.Management) *Client {
 	return &Client{management: mgmt}
 }
 
-func (c *Client) CreateMember(ctx context.Context, u *user.User) (string , error) {
+func (c *Client) CreateMember(ctx context.Context, u *user.User) (string, error) {
 	// 招待メールからパスワードを設定するまでの間の仮パスワードを生成します。
 	pass, err := generateRandomPassword()
 	if err != nil {
