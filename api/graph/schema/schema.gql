@@ -1,0 +1,17 @@
+input UserInfo {
+  email: String!
+  familyName: String!
+  givenName: String!
+}
+
+type Auth0UserID {
+  Auth0UserID: ID!
+}
+
+type Mutation {
+  registerUser(input: UserInfo!): Auth0UserID!
+}
+
+type Query {
+  memberId: ID!
+}
