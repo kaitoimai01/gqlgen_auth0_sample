@@ -27,7 +27,7 @@ func RegisterUser(ctx context.Context, input *RegisterUserInput) (string, error)
 		mc  = input.MailClient
 	)
 
-	auth0UserID, err := amc.CreateMember(ctx, input.User)
+	auth0UserID, err := amc.CreateUser(ctx, input.User)
 	if err != nil {
 		return "", fmt.Errorf("failed to create user on auth0: %w", err)
 	}

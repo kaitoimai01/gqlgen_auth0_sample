@@ -25,7 +25,7 @@ func NewClient(mgmt *management.Management) *Client {
 	return &Client{management: mgmt}
 }
 
-func (c *Client) CreateMember(ctx context.Context, u *user.User) (string, error) {
+func (c *Client) CreateUser(ctx context.Context, u *user.User) (string, error) {
 	// 招待メールからパスワードを設定するまでの間の仮パスワードを生成します。
 	pass, err := generateRandomPassword()
 	if err != nil {

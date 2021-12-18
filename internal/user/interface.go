@@ -7,7 +7,7 @@ import (
 )
 
 type Auth0ManagementClient interface {
-	CreateMember(ctx context.Context, u *User) (string, error)
+	CreateUser(ctx context.Context, u *User) (string, error)
 	CreateInvitationUrl(ctx context.Context, auth0UserID string) (string, error)
 }
 
